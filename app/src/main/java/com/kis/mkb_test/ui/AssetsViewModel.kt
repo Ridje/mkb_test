@@ -1,18 +1,17 @@
 package com.kis.mkb_test.ui
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kis.mkb_test.model.pojo.AssetRate
 import com.kis.mkb_test.repository.Repository
-import com.kis.mkb_test.repository.RepositoryNetwork
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
-import java.util.stream.Collectors
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,6 +27,7 @@ class AssetsViewModel @Inject constructor(private val repository: Repository) : 
                 try {
                     ratesDTO = repository.getAssetsExchangeRates()
                 } catch (e : Exception) {
+                    e.printStackTrace()
                     return@withContext AssetsState.Error(e)
                 }
 

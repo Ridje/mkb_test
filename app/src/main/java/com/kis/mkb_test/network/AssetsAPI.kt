@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface AssetsAPI {
 
     companion object {
-        val baseURL = "https://alpha.as50464.net:29870"
+        const val baseURL = "https://alpha.as50464.net:29870"
     }
 
     @Headers(
@@ -16,11 +16,9 @@ interface AssetsAPI {
         "Accept: application/json")
     @POST("moby-pre-44/core")
     fun assetsExchangeRates(
-        @Query("r") r : String = "BEYkZbmV",
-        @Query("d") d : String = "563B4852-6D4B-49D6-A86E-B273DD520FD2",
-        @Query("t") t : String = "ExchangeRates",
-        @Query("v") v : String = "44",
-        @Field("uid") uid : String = "563B4852-6D4B-49D6-A86E-B273DD520FD2",
-        @Field("type") type : String = "ExchangeRates",
-        @Field("rid") rid : String = "BEYkZbmV") : Call<AssetRates>
+        @Query("r") r : String,
+        @Query("d") d : String,
+        @Query("t") t : String,
+        @Query("v") v : String,
+        @Body fields : Map<String, String>) : Call<AssetRates>
 }

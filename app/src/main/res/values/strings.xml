@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">mkb_test</string>
+    <string name="Error">Error</string>
+    <string name="Reload">Reload</string>
+    <string name="buy_for">BUY FOR</string>
+    <string name="sell_for">SELL FOR</string>
+    <string name="delta">DELTA</string>
 </resources>

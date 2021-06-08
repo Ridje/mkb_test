@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">МКБ валюты (тестовое)</string>
+    <string name="Error">Ошибка</string>
+    <string name="Reload">Перезагрузка</string>
+    <string name="buy_for">ПОКУПКА</string>
+    <string name="sell_for">ПРОДАЖА</string>
+    <string name="delta">ДЕЛЬТА</string>
+</resources>

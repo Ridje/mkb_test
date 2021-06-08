@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -27,6 +28,7 @@ class NetworkModule {
     fun provideOkHTTPClient() : OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .callTimeout(10L, TimeUnit.SECONDS)
             .build()
     }
 
@@ -44,7 +46,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit() : Repository {
-        return RepositoryNetwork
+    fun provideMainRepository(api : AssetsAPI) : Repository {
+        return RepositoryNetwork(api)
     }
 }
