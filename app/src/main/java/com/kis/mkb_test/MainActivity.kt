@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToDefaultFragment() {
-        title = resources.getString(R.string.app_name)
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)

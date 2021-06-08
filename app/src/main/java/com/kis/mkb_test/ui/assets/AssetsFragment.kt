@@ -40,6 +40,7 @@ class AssetsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().title = resources.getString(R.string.app_name)
         initAdapter()
         initObservable()
         initSwipeRefresh()
