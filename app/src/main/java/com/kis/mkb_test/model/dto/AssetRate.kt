@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder
     "deltaBuy",
     "deltaSale"
 )
-data class Asset(
+data class AssetRate(
     @JsonProperty("tp") val tp : Int,
     @JsonProperty("name") val name :  String,
     @JsonProperty("from") val from : Int,

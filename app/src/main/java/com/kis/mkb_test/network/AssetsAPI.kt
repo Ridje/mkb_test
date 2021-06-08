@@ -1,6 +1,6 @@
 package com.kis.mkb_test.network
 
-import com.kis.mkb_test.model.dto.Assets
+import com.kis.mkb_test.model.dto.AssetRates
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,5 +22,5 @@ interface AssetsAPI {
         @Query("v") v : String = "44",
         @Field("uid") uid : String = "563B4852-6D4B-49D6-A86E-B273DD520FD2",
         @Field("type") type : String = "ExchangeRates",
-        @Field("rid") rid : String = "BEYkZbmV") : Call<Assets>
+        @Field("rid") rid : String = "BEYkZbmV") : Call<AssetRates>
 }
