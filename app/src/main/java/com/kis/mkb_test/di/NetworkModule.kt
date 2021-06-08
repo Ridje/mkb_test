@@ -1,6 +1,8 @@
 package com.kis.mkb_test.di
 
 import com.kis.mkb_test.network.AssetsAPI
+import com.kis.mkb_test.repository.Repository
+import com.kis.mkb_test.repository.RepositoryNetwork
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,4 +42,9 @@ class NetworkModule {
             .create(AssetsAPI::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideRetrofit() : Repository {
+        return RepositoryNetwork
+    }
 }
