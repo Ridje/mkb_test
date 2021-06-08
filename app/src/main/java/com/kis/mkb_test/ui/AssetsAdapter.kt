@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kis.mkb_test.databinding.AssetsRowBinding
 import com.kis.mkb_test.model.pojo.AssetRate
 
-class AssetsAdapter(private val assets : List<AssetRate>) : RecyclerView.Adapter<AssetsAdapter.ViewHolder>() {
+class AssetsAdapter(var assets : List<AssetRate>) : RecyclerView.Adapter<AssetsAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

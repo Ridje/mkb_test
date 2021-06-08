@@ -22,6 +22,7 @@ class AssetsViewModel @Inject constructor(private val repository: Repository) : 
 
     fun getRates() {
         viewModelScope.launch {
+            _ratesLiveData.postValue(AssetsState.Loading)
             val result = withContext(Dispatchers.IO) {
                 val ratesDTO : List<com.kis.mkb_test.model.dto.AssetRate>
                 try {

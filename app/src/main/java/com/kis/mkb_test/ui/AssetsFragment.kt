@@ -20,8 +20,12 @@ class AssetsFragment : Fragment() {
     }
 
     private val viewModel : AssetsViewModel by viewModels()
+
     private var _binding: AssetsFragmentBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("Trying to reach binding between onCreateView and OnDestoryView")
+
+    private var _adapter: AssetsAdapter? = null
+    private val assetsAdapter get() = _adapter ?: throw RuntimeException("Trying to reach binding between onViewCreated and OnDestoryView")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,31 +37,36 @@ class AssetsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _adapter = AssetsAdapter(listOf())
+        binding.assetsFragmentRates.adapter = assetsAdapter
         viewModel.ratesLiveData.observe(viewLifecycleOwner) {
             renderState(it)
         }
         viewModel.getRates()
+        binding.assetsFragmentSwipeRefreshLayout.setOnRefreshListener { viewModel.getRates() }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        _adapter = null
     }
 
     fun renderState(fragmentState : AssetsState) {
         when (fragmentState) {
             is AssetsState.Error -> {
-                binding.progressBar.visibility = View.GONE
+                binding.assetsFragmentSwipeRefreshLayout.isRefreshing = false;
                 binding.root.showSnackBar(getString(R.string.Error), getString(R.string.Reload)) { viewModel.getRates() }
             }
             is AssetsState.Loading -> {
+                binding.assetsFragmentSwipeRefreshLayout.isRefreshing = true;
                 binding.assetsFragmentRates.visibility = View.GONE
-                binding.progressBar.visibility = View.VISIBLE
             }
             is AssetsState.Success -> {
-                binding.progressBar.visibility = View.GONE
-                binding.assetsFragmentRates.adapter = AssetsAdapter(fragmentState.rates)
+                binding.assetsFragmentSwipeRefreshLayout.isRefreshing = false;
+                assetsAdapter.assets =  fragmentState.rates
                 binding.assetsFragmentRates.visibility = View.VISIBLE
+                assetsAdapter.notifyDataSetChanged()
             }
         }
     }
