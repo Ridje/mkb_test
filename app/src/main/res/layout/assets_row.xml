@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/assets_row_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_curMnemTo"
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="JPY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_curCodeTo"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="(392)"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_curMnemTo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_curMnemTo" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_buyForTitle"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:text="@string/buy_for"
+                app:layout_constraintStart_toEndOf="@+id/assets_row_curMnemTo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_buyDeltaTitle"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/delta"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_buyForTitle"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_buyForTitle"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_buyForTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_buyForValue"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.6240"
+                app:layout_constraintEnd_toStartOf="@+id/assets_row_curMnemFrom"
+                app:layout_constraintStart_toEndOf="@+id/assets_row_buyForTitle"
+                app:layout_constraintTop_toTopOf="@+id/assets_row_buyForTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_buyDelta"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-0.0050"
+                app:layout_constraintBottom_toBottomOf="@+id/assets_row_buyDeltaTitle"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_buyForValue"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_buyForValue"
+                app:layout_constraintTop_toTopOf="@+id/assets_row_buyDeltaTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_sellForTitle"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@string/sell_for"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_buyForTitle"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_buyForTitle"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_buyDeltaTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_sellDeltaTitle"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/delta"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_sellForTitle"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_sellForTitle"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_sellForTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_sellForValue"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.7240"
+                app:layout_constraintEnd_toStartOf="@+id/assets_row_curMnemFrom"
+                app:layout_constraintStart_toEndOf="@+id/assets_row_sellForTitle"
+                app:layout_constraintTop_toTopOf="@+id/assets_row_sellForTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_sellDelta"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-0.0050"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_sellForValue"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_sellForValue"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_sellForValue">
+
+            </com.google.android.material.textview.MaterialTextView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_curMnemFrom"
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="RUR"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/assets_row_curCodeFrom"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="(810)"
+                app:layout_constraintEnd_toEndOf="@+id/assets_row_curMnemFrom"
+                app:layout_constraintStart_toStartOf="@+id/assets_row_curMnemFrom"
+                app:layout_constraintTop_toBottomOf="@+id/assets_row_curMnemFrom" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>
