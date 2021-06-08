@@ -1,4 +1,4 @@
-package com.kis.mkb_test.ui
+package com.kis.mkb_test.ui.assets
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.kis.mkb_test.MainActivity
 import com.kis.mkb_test.R
 import com.kis.mkb_test.databinding.AssetsFragmentBinding
+import com.kis.mkb_test.model.pojo.AssetRate
+import com.kis.mkb_test.ui.asset.AssetFragment
 import com.kis.mkb_test.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.RuntimeException
@@ -37,13 +40,25 @@ class AssetsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _adapter = AssetsAdapter(listOf())
-        binding.assetsFragmentRates.adapter = assetsAdapter
+        initAdapter()
+        initObservable()
+        initSwipeRefresh()
+    }
+
+    private fun initSwipeRefresh() {
+        binding.assetsFragmentSwipeRefreshLayout.setOnRefreshListener { viewModel.getRates() }
+    }
+
+    private fun initObservable() {
         viewModel.ratesLiveData.observe(viewLifecycleOwner) {
             renderState(it)
         }
-        viewModel.getRates()
-        binding.assetsFragmentSwipeRefreshLayout.setOnRefreshListener { viewModel.getRates() }
+    }
+
+    private fun initAdapter() {
+        val onClickListener = { position : Int -> openAssetRate(assetsAdapter.assets[position]) }
+        _adapter = AssetsAdapter(listOf(), onClickListener)
+        binding.assetsFragmentRates.adapter = assetsAdapter
     }
 
     override fun onDestroyView() {
@@ -60,7 +75,6 @@ class AssetsFragment : Fragment() {
             }
             is AssetsState.Loading -> {
                 binding.assetsFragmentSwipeRefreshLayout.isRefreshing = true;
-                binding.assetsFragmentRates.visibility = View.GONE
             }
             is AssetsState.Success -> {
                 binding.assetsFragmentSwipeRefreshLayout.isRefreshing = false;
@@ -69,5 +83,11 @@ class AssetsFragment : Fragment() {
                 assetsAdapter.notifyDataSetChanged()
             }
         }
+    }
+
+    fun openAssetRate(assetRate : AssetRate) {
+        val bundle = Bundle()
+        bundle.putParcelable(AssetFragment.BUNDLE_EXTRA, assetRate)
+        (requireActivity() as MainActivity).navigateToFragment(AssetFragment.newInstance(bundle))
     }
 }

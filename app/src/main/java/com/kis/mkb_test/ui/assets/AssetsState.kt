@@ -1,4 +1,4 @@
-package com.kis.mkb_test.ui
+package com.kis.mkb_test.ui.assets
 
 import com.kis.mkb_test.model.pojo.AssetRate
 

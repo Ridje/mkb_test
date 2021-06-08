@@ -2,8 +2,12 @@
 <resources>
     <string name="app_name">МКБ валюты (тестовое)</string>
     <string name="Error">Ошибка</string>
-    <string name="Reload">Перезагрузка</string>
+    <string name="Reload">Перезагрузить</string>
     <string name="buy_for">ПОКУПКА</string>
     <string name="sell_for">ПРОДАЖА</string>
     <string name="delta">ДЕЛЬТА</string>
+    <string name="detailed_rate">Детализация курса</string>
+    <string name="additional_info">Дополнительная информация</string>
+    <string name="tp_what_is_that">tp</string>
+    <string name="basic">база</string>
 </resources>

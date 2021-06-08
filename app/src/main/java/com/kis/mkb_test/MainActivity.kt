@@ -3,7 +3,7 @@ package com.kis.mkb_test
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.kis.mkb_test.ui.AssetsFragment
+import com.kis.mkb_test.ui.assets.AssetsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,11 +17,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToDefaultFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, getDefaultFragment()).commit()
+        title = resources.getString(R.string.app_name)
+        supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+            .replace(R.id.fragment_container, getDefaultFragment())
+            .commit()
     }
 
     fun navigateToFragment(fragment : Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun getDefaultFragment() : Fragment {

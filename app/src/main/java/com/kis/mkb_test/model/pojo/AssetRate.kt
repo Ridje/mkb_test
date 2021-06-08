@@ -1,8 +1,11 @@
 package com.kis.mkb_test.model.pojo
 
 import android.icu.math.BigDecimal
+import android.os.Parcelable
 import com.kis.mkb_test.model.dto.AssetRate
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class AssetRate(
     val tp: Int,
     val name: String,
@@ -15,7 +18,7 @@ data class AssetRate(
     val sale: BigDecimal,
     val deltaBuy: BigDecimal,
     val deltaSale: BigDecimal
-) {
+) : Parcelable {
     constructor(assetRateDTO : AssetRate) : this (assetRateDTO.tp,
         assetRateDTO.name,
         assetRateDTO.from,

@@ -28,7 +28,6 @@ class NetworkModule {
     fun provideOkHTTPClient() : OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .callTimeout(10L, TimeUnit.SECONDS)
             .build()
     }
 

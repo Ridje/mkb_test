@@ -1,4 +1,4 @@
-package com.kis.mkb_test.ui
+package com.kis.mkb_test.ui.assets
 
 
 import androidx.lifecycle.LiveData
@@ -19,6 +19,10 @@ class AssetsViewModel @Inject constructor(private val repository: Repository) : 
 
     private val _ratesLiveData : MutableLiveData<AssetsState> = MutableLiveData()
     val ratesLiveData : LiveData<AssetsState> = _ratesLiveData
+
+    init {
+        getRates()
+    }
 
     fun getRates() {
         viewModelScope.launch {
